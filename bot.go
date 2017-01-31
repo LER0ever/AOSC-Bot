@@ -36,11 +36,5 @@ func BootBot() {
 				routers.CommandRouter(update)
 			}
 		}
-		/*
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
-			msg.ReplyToMessageID = update.Message.MessageID
-
-			bot.Bot.Send(msg)
-		*/
 	}
 }
