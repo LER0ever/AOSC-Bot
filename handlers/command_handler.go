@@ -18,5 +18,9 @@ func CommandHandler(update tgbotapi.Update) {
 		command.Help(update)
 	case "pakreq":
 		command.Pakreq(update)
+	case "board":
+		command.Board(update)
+	case "version":
+		command.Version(update)
 	}
 }

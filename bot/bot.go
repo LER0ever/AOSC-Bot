@@ -1,9 +1,16 @@
 package bot
 
-import "gopkg.in/telegram-bot-api.v4"
+import (
+	"github.com/LER0ever/AOSC-Bot/models"
+	"gopkg.in/telegram-bot-api.v4"
+)
 
 // Bot global variable
-var Bot, _ = tgbotapi.NewBotAPI("296273755:AAElr9MrsGN6_Z8xil4TJ5At9qtCSoojpgY")
+var Bot *tgbotapi.BotAPI
+
+func init() {
+	Bot, _ = tgbotapi.NewBotAPI(models.CurConfig.TgBotKey)
+}
 
 // SendMessage sends the message
 func SendMessage(ChatID int64, Msg string) {

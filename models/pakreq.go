@@ -12,6 +12,7 @@ type Pakreq struct {
 	PkgURL    string
 	PkgDesc   string
 	Author    string
+	IssueURL  string
 	OpenTime  time.Time
 	CloseTime time.Time
 }
@@ -37,7 +38,7 @@ func IsPakreq(text string) bool {
 	return true
 }
 
-// PakreqToPkgString returns a slice of string containing package names
+// PakreqToArray returns a slice of string containing package names
 func PakreqToArray(text string) []string {
 	if IsPakreq(text) == false {
 		log.Fatalf("String is not a valid pakreq: %s", text)

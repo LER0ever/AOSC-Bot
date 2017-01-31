@@ -1,2 +1,8 @@
 package: github.com/LER0ever/AOSC-Bot
-import: []
+import:
+- package: github.com/BurntSushi/toml
+- package: github.com/google/go-github
+  subpackages:
+  - github
+- package: golang.org/x/oauth2
+- package: gopkg.in/telegram-bot-api.v4

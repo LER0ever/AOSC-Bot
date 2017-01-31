@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/LER0ever/AOSC-Bot/bot"
+	"github.com/LER0ever/AOSC-Bot/github"
 	"github.com/LER0ever/AOSC-Bot/routers"
 	"gopkg.in/telegram-bot-api.v4"
 )
@@ -37,4 +38,9 @@ func BootBot() {
 			}
 		}
 	}
+}
+
+// InitGHClient inits the git client
+func InitGHClient() {
+	github.InitClient()
 }
