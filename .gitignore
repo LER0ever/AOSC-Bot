@@ -26,3 +26,4 @@ _testmain.go
 
 AOSC-Bot
 vendor/
+config.toml

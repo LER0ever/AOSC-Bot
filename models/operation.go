@@ -6,15 +6,6 @@ func AddPakreq(pakreq Pakreq) bool {
 		return false
 	}
 	CurConfig.CurPakreqs = append(CurConfig.CurPakreqs, pakreq)
+	ExportToFile()
 	return true
-}
-
-// PakreqExists returns if the pakreq already exists in the database
-func PakreqExists(pakreq Pakreq) bool {
-	for _, pkg := range CurConfig.CurPakreqs {
-		if pkg.PkgName == pakreq.PkgName {
-			return true
-		}
-	}
-	return false
 }

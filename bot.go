@@ -32,7 +32,7 @@ func BootBot() {
 			if strings.Contains(update.Message.Text, `#`) {
 				routers.HashtagRouter(update)
 			}
-			if update.Message.Text[0] == '/' {
+			if update.Message.IsCommand() {
 				routers.CommandRouter(update)
 			}
 		}
