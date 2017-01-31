@@ -27,17 +27,25 @@ func IsPakreq(text string) bool {
 		return false
 	}
 	StrPakreqSlices := strings.Split(text, " ")
-	if StrPakreqSlices[0] != `#pakreq` || len(StrPakreqSlices) <= 1 {
+	if StrPakreqSlices[0] != `#pakreq` || len(StrPakreqSlices) != 4 || StrPakreqSlices[2] != `@` || IsURL(StrPakreqSlices[3]) == false {
 		return false
 	}
 	return true
 }
 
 // PakreqToPkgString returns a slice of string containing package names
-func PakreqToPkgString(text string) []string {
+func PakreqToArray(text string) []string {
 	if IsPakreq(text) == false {
 		log.Fatalf("String is not a valid pakreq: %s", text)
 	}
 	StrPakreqSlices := strings.Split(text, " ")
 	return StrPakreqSlices[1:]
+}
+
+// IsURL use a very efficient way to judge if it is a URL ;)
+func IsURL(text string) bool {
+	if text[0:4] != "http" {
+		return false
+	}
+	return true
 }

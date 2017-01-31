@@ -2,8 +2,7 @@ package handlers
 
 import (
 	"log"
-
-	"strings"
+	"time"
 
 	"github.com/LER0ever/AOSC-Bot/bot"
 	"github.com/LER0ever/AOSC-Bot/models"
@@ -14,6 +13,8 @@ import (
 func PakreqHandler(update tgbotapi.Update) {
 	log.Printf("PakreqHandler")
 	var replymsg string
-	replymsg = "Pakreq created for " + strings.Join(models.PakreqToPkgString(update.Message.Text), " ")
+	arrpakreq := models.PakreqToArray(update.Message.Text)
+	replymsg = "Pakreq created for \nPackage: " + arrpakreq[0] + "\nUpstream: " + arrpakreq[2] +
+		"\nAuthor: " + update.Message.From.UserName + "\nStartTime: " + update.Message.Time().Format(time.RFC1123)
 	bot.ReplyMessage(update.Message.Chat.ID, replymsg, update.Message.MessageID)
 }
