@@ -22,5 +22,7 @@ func CommandHandler(update tgbotapi.Update) {
 		command.Board(update)
 	case "version":
 		command.Version(update)
+	case "sunset":
+		command.Sunset(update)
 	}
 }
