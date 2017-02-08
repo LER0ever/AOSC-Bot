@@ -6,6 +6,7 @@ import (
 
 	"github.com/LER0ever/AOSC-Bot/bot"
 	"github.com/LER0ever/AOSC-Bot/github"
+	"github.com/LER0ever/AOSC-Bot/models"
 	"github.com/LER0ever/AOSC-Bot/routers"
 	"gopkg.in/telegram-bot-api.v4"
 )
@@ -27,6 +28,7 @@ func BootBot() {
 			continue
 		}
 
+		addToMemberList(update.Message.From.UserName)
 		if update.Message.ReplyToMessage != nil {
 			routers.ReplyRouter(update)
 		} else {
@@ -43,4 +45,15 @@ func BootBot() {
 // InitGHClient inits the git client
 func InitGHClient() {
 	github.InitClient()
+}
+
+func addToMemberList(userID string) {
+	for _, m := range models.CurConfig.MembersID {
+		if m == userID {
+			return
+		}
+	}
+	models.CurConfig.MembersID = append(models.CurConfig.MembersID, userID)
+	log.Printf("addToMemberList: %s", userID)
+	models.ExportToFile()
 }

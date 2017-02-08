@@ -6,6 +6,7 @@ type Config struct {
 	GhToken       string
 	Version       string
 	RepoURL       string
+	MembersID     []string
 	CurPakreqs    []Pakreq
 	CurUpdates    []Update
 	ClosedPakreqs []Pakreq
